@@ -17,11 +17,11 @@ async function loadWords() {
     try {
         let response;
         if (lang === "UA") {
-            response = await fetch("ukrainian.txt");
+            response = await fetch("./ukrainian.txt");
         } else if (lang === "US") {
-            response = await fetch("us.txt");
+            response = await fetch("./us.txt");
         } else {
-            response = await fetch("uk.txt");
+            response = await fetch("./uk.txt");
         }
 
         const text = await response.text();
