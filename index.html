@@ -1,0 +1,113 @@
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WordleAI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <section class="one">
+            <button id="langToggle" onclick="changeLang()">
+                <img src="icons/001-ukraine.png" alt="UA" class="flag-icon">
+                <span class="lang-text">UA</span>
+            </button>
+            <button id="modeToggle" onclick="toggleMode()">Слово дня</button>
+        </section>
+        <h1>WordleAI</h1>
+        <section class="two">
+            <button id="giveUpBtn" onclick="giveUp()">Здатися</button>
+            <button id="difficulty" onclick="toggleDifficulty()">Заблоковано</button>
+        </section>
+    </nav>
+    <div id="board"></div>
+    <div id="keyboard" class="uak">
+        <div class="raw">
+            <button class="key">Й</button>
+            <button class="key">Ц</button>
+            <button class="key">У</button>
+            <button class="key">К</button>
+            <button class="key">Е</button>
+            <button class="key">Н</button>
+            <button class="key">Г</button>
+            <button class="key">Ґ</button>
+            <button class="key">Ш</button>
+            <button class="key">Щ</button>
+            <button class="key">З</button>
+            <button class="key">Х</button>
+        </div>
+        <div class="raw">
+            <button class="key">Ф</button>
+            <button class="key">І</button>
+            <button class="key">Ї</button>
+            <button class="key">В</button>
+            <button class="key">А</button>
+            <button class="key">П</button>
+            <button class="key">Р</button>
+            <button class="key">О</button>
+            <button class="key">Л</button>
+            <button class="key">Д</button>
+            <button class="key">Ж</button>
+            <button class="key">Є</button>
+        </div>
+        <div class="raw">
+            <button class="key" id="backspace" onclick="handleBackspace()"><i class="fi fi-br-delete"></i></button>
+            <button class="key">Я</button>
+            <button class="key">Ч</button>
+            <button class="key">С</button>
+            <button class="key">М</button>
+            <button class="key">И</button>
+            <button class="key">Т</button>
+            <button class="key">Ь</button>
+            <button class="key">Б</button>
+            <button class="key">Ю</button>
+            <button class="key" id="enter" onclick="checkGuess()"><i class="fi fi-br-enter"></i></button>
+        </div>
+    </div>
+    <div id="keyboard" class="enk">
+        <div class="raw">
+            <button class="key">Q</button>
+            <button class="key">W</button>
+            <button class="key">E</button>
+            <button class="key">R</button>
+            <button class="key">T</button>
+            <button class="key">Y</button>
+            <button class="key">U</button>
+            <button class="key">I</button>
+            <button class="key">O</button>
+            <button class="key">P</button>
+        </div>
+        <div class="raw">
+            <button class="key">A</button>
+            <button class="key">S</button>
+            <button class="key">D</button>
+            <button class="key">F</button>
+            <button class="key">G</button>
+            <button class="key">H</button>
+            <button class="key">J</button>
+            <button class="key">K</button>
+            <button class="key">L</button>
+        </div>
+        <div class="raw">
+            <button class="key" id="backspace" onclick="handleBackspace()"><i class="fi fi-br-delete"></i></button>
+            <button class="key">Z</button>
+            <button class="key">X</button>
+            <button class="key">C</button>
+            <button class="key">V</button>
+            <button class="key">B</button>
+            <button class="key">N</button>
+            <button class="key">M</button>
+            <button class="key" id="enter" onclick="checkGuess()"><i class="fi fi-br-enter"></i></button>
+        </div>
+    </div>
+    <div id="timerDisplay">00:00</div>
+    <div id="message"></div>
+</body>
+
+</html>

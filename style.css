@@ -1,0 +1,345 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 0;
+    padding: 20px;
+    background: white;
+}
+nav{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#langToggle {
+    border-radius: 5px; /* Круглі краї для кнопки */
+    padding: 10px 20px; /* Відступи всередині кнопки */
+    background-color: #f0f0f0; /* Світлий фон */
+    display: flex;
+    justify-content: space-between; /* Використовуємо простір між елементами */
+    align-items: center;
+    cursor: pointer; /* Вказівник при наведенні */
+    transition: .2s;
+    border: none;
+}
+
+.flag-icon {
+    width: 16px; /* Встановлюємо розмір прапора */
+    height: auto;
+    margin-right: 8px; /* Між прапором та текстом */
+}
+
+.lang-text {
+    font-size: 14px; /* Розмір тексту */
+    font-weight: bold; /* Текст жирний */
+    color: #333; /* Темний колір тексту */
+}
+
+#langToggle:focus {
+    outline: none; /* Прибираємо стандартне виділення при фокусі */
+}
+#modeToggle, #giveUpBtn, #difficulty {
+    border-radius: 5px;
+    border: none;
+    width: 40%;
+    text-align: center;
+}
+
+#board {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    width: min(90vw, 300px);
+    margin: 10px 0;
+}
+
+.tile {
+    aspect-ratio: 1 / 1;
+    background: #fbfcff;
+    border: 2px solid #dee1e9;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.correct {
+    background: #79b851;
+    color: white;
+    border: none;
+}
+
+.present {
+    background: #f3c237;
+    color: white;
+    border: none;
+}
+
+.absent {
+    background: #a4aec4;
+    color: white;
+    border: none;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 200px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1em;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 0, 0, 0.75);
+    color: rgb(128, 0, 0);
+    font-weight: bold;
+    display: none;
+    /* Початково приховано */
+    justify-content: center;
+    /* Центрує вміст по вертикалі */
+    align-items: center;
+    /* Центрує вміст по горизонталі */
+    font-size: 2em;
+    text-align: center;
+    z-index: 9999;
+    /* Перекриває інші елементи */
+    font-size: 5em;
+    transition: 0.9s;
+}
+
+.show {
+    display: flex;
+    /* Показує повідомлення */
+    animation: fadeIn 1s ease-in-out forwards;
+    /* Анімація для появи */
+}
+
+.hide {
+    animation: fadeOut 1s ease-in-out forwards;
+    /* Анімація для зникнення */
+}
+.uak{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    max-width: 750px; /* Максимальна ширина для адаптивності */
+}
+.enk {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    max-width: 750px; /* Максимальна ширина для адаптивності */
+  }
+.raw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.uak .key {
+    width: 50px;
+    background: #dce1ed;
+    border: none;
+    text-align: center;
+    line-height: 1;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 700;
+    transition: 0.3s;
+    grid-column: span 2;
+}
+.enk .key {
+    height: 80%;
+    width: 100%;
+    background: #dce1ed;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    min-width: 65px; /* Мінімальна ширина клавіші */
+  }
+.key.correct {
+    background-color: #79b851;
+    color: white;
+}
+.key.present {
+    background-color: #f3c237;
+    color: white;
+}
+.key.absent {
+    background-color: #a4aec4;
+    color: white;
+}
+.uak #enter, .uak #backspace{
+    grid-column: span 3;
+    font-size: 150%;
+}
+.enk #enter, .enk #backspace{
+    flex: 2;
+    font-size: 150%;
+}
+
+.key:active {
+    background-color: #b1b9ce;
+    transition: 0.3s;
+}
+#timerDisplay{
+    position: fixed;
+    bottom: 20px; /* Відстань віднизу */
+    right: 20px;  /* Відстань відправо */
+    background-color: rgba(0, 0, 0, 0.7); /* Темний фон з прозорістю */
+    color: white; /* Білий текст */
+    padding: 10px 20px; /* Відступи всередині блоку */
+    border-radius: 10px; /* Закруглені кути */
+    font-size: 16px; /* Розмір шрифта */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тінь */
+    z-index: 1000; /* Щоб блок був поверх інших елементів */
+    cursor: pointer; /* Курсор у вигляді руки */
+    transition: 0.3s ease; /* Плавний перехід кольору фону */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes fadeIn {
+    0% {
+        transform: translateY(-100%);
+        /* Початкове положення вище екрана */
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        /* Переміщається на своє місце */
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: translateY(0);
+        /* Початкове положення */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        /* Переміщається вниз екрана */
+        opacity: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    nav {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav section.one,
+    nav section.two {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav h1 {
+        order: -1;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #modeToggle,
+    #giveUpBtn,
+    #difficulty,
+    #langToggle {
+        min-width: 100px;
+        padding: 8px 10px;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .uak {
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    .enk {
+        transform: scale(0.5);
+        transform-origin: top center;
+    }
+
+    #board {
+        width: 95vw;
+        max-width: 320px;
+        gap: 4px;
+    }
+
+    .tile {
+        font-size: 22px;
+    }
+
+    #timerDisplay {
+        font-size: 14px;
+        padding: 6px 10px;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
